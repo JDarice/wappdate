@@ -1,8 +1,147 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,800;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+body{
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  color: #22546E;
 }
 
-a {
-  color: #00B7FF;
+h1 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  color: #47CE8D;
+}
+
+.navbarfullwidth {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #F2F2F2;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.navbarmenu {
+  max-width: 1440px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+  font-size: 12px;
+}
+
+.logo {
+  width: 133px;
+  height: 33.67px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.menu-item {
+  height: 80px;
+  padding-left: 37px;
+  padding-right: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  color: #16394B;
+  font-weight: 600;
+}
+
+.menu-item:hover {
+  background-color: #E5E5E5;
+}
+
+.user-menu-box {
+  width: 200px;
+  margin-left: 50px;
+  margin-right: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #47CE8D;
+  text-align: right;
+}
+
+.avatar-arrow {
+  position: relative;
+  align-self: flex-start;
+  top: 7px;
+}
+
+.avatar-name {
+  display: block;
+  font-size: 12px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-weight: 600;
+}
+
+.avatar-configuration {
+  display: block;
+  font-size: 9px;
+  font-weight: 200;
+  text-decoration: underline;
+}
+
+.user-avatar {
+  display: block;
+}
+
+.avatar-photo {
+  display: block;
+  width: 45px;
+  height: 45px;
+  background: #47CE8D;
+  border-radius: 50%;
+}
+
+.workspace-cta {
+  position: relative;
+  top: 120px;
+  max-width: 1246px;
+  height: 130px;
+  background-color: #E5E5E5;
+  margin: auto;
+  border-radius: 5px;
+  padding: 35px;
+  box-sizing: border-box;
+}
+
+.btn-success {
+  background-color: #47CE8D;
+  border: none;
+  font-size: 12px;
+  padding: 10px 40px 10px 40px;
+}
+
+.btn-success-align {
+  position: absolute;
+  right: 50px;
+  top: 45px;
+}
+
+.carroussel-component {
+  position: relative;
+  display: flex;
+  top: 160px;
+  max-width: 1246px;
+  height: 472px;
+  background-color: #22546E;
+  margin: auto;
+  border-radius: 5px;
+  padding: 35px;
+  box-sizing: border-box;
+}
+
+.add-order-item {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
 }
