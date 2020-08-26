@@ -8,11 +8,20 @@ body{
   color: #22546E;
 }
 
+.body-gray{
+  background-color: #E5E5E5;
+}
+
 h1 {
-  font-style: normal;
   font-weight: 600;
-  font-size: 25px;
+  font-size: 24px;
   color: #47CE8D;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 16px;
+  color: #E5E5E5;
 }
 
 .navbarfullwidth {
@@ -144,4 +153,76 @@ h1 {
   position: fixed;
   bottom: 0px;
   right: 0px;
+}
+
+.main-block-component {
+  position: relative;
+  top: 120px;
+  max-width: 1246px;
+  background-color: #22546E;
+  margin: auto;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.main-block-component-title {
+  position: relative;
+  max-width: 1246px;
+  height: 50px;
+  background-color: #22546E;
+  margin: auto;
+  border-radius: 5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 35px;
+  padding-right: 35px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.main-block-component-cta1 {
+  background-color: #47CE8D;
+  border: none;
+  font-size: 12px;
+  padding: 10px 40px 10px 40px;
+  position: absolute;
+  right: 6px;
+  top: 6px;
+}
+
+.main-block-component-cta2 {
+  background-color: #47CE8D;
+  border: none;
+  font-size: 12px;
+  padding: 10px 40px 10px 40px;
+  position: absolute;
+  right: 210px;
+  top: 6px;
+}
+
+.searchbox {
+  border: none;
+  font-size: 12px;
+  position: absolute;
+  right: 420px;
+  top: 6px;
+  width: 500px;
+}
+
+.form-control {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+}
+
+.main-block-component-body {
+  position: relative;
+  height: 500px;
+  background-color: #F2F2F2;
+  border-radius: 5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 35px;
+  padding-right: 35px;
+  box-sizing: border-box;
+  z-index: 1;
 }
