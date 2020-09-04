@@ -319,10 +319,26 @@ h2 {
   height: 500px;
   background-color: #F2F2F2;
   border-radius: 5px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 35px;
-  padding-right: 35px;
+  padding-top: 30px;
+  padding-bottom: 5px;
+  /* padding-left: 35px;
+  padding-right: 35px; */
   box-sizing: border-box;
   z-index: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-block-component-body-list {
+  width: 900px;
+  height: 100%;
+  background-color: #16394B;
+  border-radius: 5px;
+}
+
+.main-block-component-body-detail {
+  width: 310px;
+  height: 100%;
+  background-color: #16394B;
+  border-radius: 5px;
 }
