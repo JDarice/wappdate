@@ -573,8 +573,66 @@
                 </div>
 
                 <div class="main-block-component-body-detail">
-                    <div class="main-block-component-body-detail-header"></div>
-                    <div class="main-block-component-body-detail-container"></div>
+                    <div class="main-block-component-body-detail-header">
+                        <div class="main-block-component-body-detail-header-name">
+                            Mariana Brasil
+                        </div>
+                        <div class="main-block-component-body-detail-header-name">
+                            |
+                        </div>
+                        <div class="main-block-component-body-detail-header-name">
+                            ID: 0001
+                        </div>
+                    </div>
+                    <div class="main-block-component-body-detail-container">
+                        <div class="main-block-component-body-detail-container-photo">
+                            <div>Editar</div>
+                            <div>|</div>
+                            <div>Excluir</div>
+                        </div>
+                        <div class="main-block-component-body-detail-container-status">
+                            <div>Status do contato:</div>
+                            <!-- Rounded switch -->
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>    
+                        </div>
+                        <form>
+                            <div class="form-row form-group">
+                              <div class="col">
+                                <input type="text" class="form-control" placeholder="Nome" name="nome">
+                              </div>
+                              <div class="col">
+                                <input type="text" class="form-control" placeholder="Sobrenome" name="sobrenome">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="sr-only">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="seu@email.com.br">
+                            </div>                            
+                            <div class="form-group">
+                                <label for="whatsapp" class="sr-only">WhatsApp</label>
+                                <input type="tel" class="form-control" id="whatsapp" name="whatsapp" placeholder="WhatsApp: (11) 9 1234 - 5678">
+                            </div>                            
+                            <div class="form-group">
+                                <label for="cpfoucnpj" class="sr-only">CPF ou CNPJ</label>
+                                <input type="text" class="form-control" id="cpfoucnpj" name="cpfoucnpj" placeholder="CPF ou CNPJ">
+                            </div>                            
+                            <div class="form-group">
+                                <label for="senha" class="sr-only">Senha</label>
+                                <input type="password" class="form-control" id="senha" name="senha" placeholder="*********">
+                            </div>   
+                            <div class="form-row form-group">
+                                <div class="col">
+                                  <input type="submit" class="btn btn-success" value="Salvar" name="salvar" id="salvar">
+                                </div>
+                                <div class="col">
+                                    <input type="submit" class="btn btn-secondary" value="Excluir" name="excluir" id="excluir">
+                                </div>
+                            </div>                           
+                        </form>                         
+                    </div>
                 </div>
 
             </div>
