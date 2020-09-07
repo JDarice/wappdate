@@ -24,6 +24,10 @@ h2 {
   color: #47CE8D;
 }
 
+p2 {
+  color: #ffffff;
+}
+
 .navbarfullwidth {
   position: sticky;
   top: 0;
@@ -243,14 +247,14 @@ h2 {
 
 .carroussel-component {
   position: relative;
-  display: flex;
+  display: block;
   top: 80px;
   max-width: 1246px;
   height: 472px;
   background-color: #22546E;
   margin: auto;
   border-radius: 5px;
-  padding: 35px;
+  /* padding: 35px; */
   box-sizing: border-box;
 }
 
@@ -547,4 +551,21 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.carousel-inner{
+  box-sizing: border-box;
+}
+
+.carousel-item{
+  box-sizing: border-box;
+}
+
+.carousel-item-header{
+  box-sizing: border-box;
+  width: 100%;
+  height: 130px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 35px;
 }
