@@ -581,7 +581,7 @@ input:checked + .slider:before {
 
 .main-block-component-body-card-group{
   /* position: inherit; */
-  height: inherit;
+  /* height: inherit; */
   /* box-sizing: border-box; */
   display: flex;
   /* justify-content: space-between; */
@@ -624,11 +624,26 @@ input:checked + .slider:before {
   height: 100%;
   background-color: #ffffff;
   filter: drop-shadow(4px 4px 30px rgba(0, 0, 0, 0.25));
+  display: flex;
 }
 
 .main-block-component-body-card-form-hidden {
   display: none;
   visibility: hidden;
+}
+
+.main-block-component-body-card-form-container{
+  width: 90%;
+  height: 90%;
+  border: 1px solid #F2F2F2;
+  border-radius: 5px;
+  /* background-color: aqua; */
+  margin: auto;
+  padding: 75px;
+}
+
+.main-block-component-body-card-form-char-counter{
+  display: flex;
 }
   
 .main-block-component-body-card-left-column-index{
@@ -790,5 +805,9 @@ Media Queries
   .main-block-component-body-card-group{
     margin-top: 10px;
   }  
+
+  .main-block-component-body-card-form-container{
+    padding: 25px;
+  }
   
 }
