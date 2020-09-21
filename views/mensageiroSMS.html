@@ -217,6 +217,7 @@
                             <h2>Olá, Mariana.</h2>
                             <p>Nesta sessão, vamos te ajudar a configurar o mensageiro SMS na sua conta - é bem legal, não é mesmo?</p>
                             <p>Você vai observar que estão sessão está organizada em <strong>2 passos</strong>, fizemos desta maneira para que fosse mais fácil para você enviar seus dados de uma forma mais organizada e fácil. <strong>Vamos começar?</strong></p>
+                            <p>Essas mensagens serão usadas para disparar as notificações para seus clientes no momento em que você iniciar e/ou finalizar o serviço ou produto dele, facilitando seu dia-a-dia e dispensando a necessidade de enviar mensagens para todos os clientes manualmente.</p>
                             <p>Quando você estiver pronto(a), é só clicar na seta localizada na parte de baixo da coluna com o número 1. Se tiver dúvidas ou precisar de alguma ajuda, você pode acessar a nossa sessão de suporte.</p>
                             <p>Estamos juntos nessa!</p><br>
                             <p>Sucesso e diversão na sua jornada!</p>
@@ -251,13 +252,13 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text" id="inputGroup-sizing-sm">Nome do seu negócio:</span>
                                     </div>
-                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" onkeyup="countChar(this)">
+                                    <input id="businessFromName" type="text" class="form-control businessFromName" aria-label="Small" aria-describedby="inputGroup-sizing-sm" onkeyup="countChar(this)">
                                 </div>
                                 <div class="main-block-component-body-card-form-char-counter">
                                     <div id="charNum"></div>    
                                 </div>
                                 <hr>
-                                <button>Confirmar</button>                            
+                                <div class="btn btn-success" onclick="mostrarbotaomensageiro2()">Confirmar</div>
                             </form>
                         </div>
                     </div>
@@ -279,13 +280,42 @@
                         </div>
                     </div>
                     <div class="main-block-component-body-card-form-hidden" id="main-block-component-body-card-form-2">
+                        <div class="main-block-component-body-card-form-container">
+                            <form action="" method="POST">
+                                <h2>Estamos quade lá!</h2>
+                                <p>Agora, vamos criar algumas mensagens.</p>
+                                <ul>
+                                    <li><strong>Pedido iniciado</strong>: Ola, cliente. Acabamos de iniciar a produção da sua encomenda, entraremos em contato assim que estiver pronto.</li><br>
+                                    <li><strong>Pedido pronto</strong>: Oi, cliente. Seu encomenda está pronta e disponível para retirada. Horario limite para retirada até as 18h. Ate breve.</li>
+                                </ul>
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm">Pedido iniciado:</span>
+                                    </div>
+                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" onkeyup="orderStartedCountChar(this)">
+                                </div>
+                                <div class="main-block-component-body-card-form-char-counter">
+                                    <div id="orderStarted"></div>    
+                                </div>
+                                <div class="input-group input-group-sm mb-3 mt-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroup-sizing-sm">Pedido pronto:</span>
+                                    </div>
+                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" onkeyup="orderReadyCountChar(this)">
+                                </div>
+                                <div class="main-block-component-body-card-form-char-counter">
+                                    <div id="orderReady"></div>    
+                                </div>
+                                <hr>
+                                <div class="btn btn-success" onclick="mostrarbotaomensageiro3()">Finalizar</div>
+                        </div>
                     </div>
 
-                    <div class="main-block-component-body-card-left-column"
+                    <div class="main-block-component-body-card-left-column main-block-component-body-card-border-radius-right"
                         id="main-block-component-body-card-left-column-3">
                         <div class="main-block-component-body-card-left-column-index"
                             id="main-block-component-body-card-left-column-index-3">
-                            3
+                            🎉
                         </div>
                         <div class="main-block-component-body-card-left-column-button-hidden"
                             id="main-block-component-body-card-left-column-button-3" onclick="mensageiro3()">
@@ -298,43 +328,23 @@
                         </div>
                     </div>
                     <div class="main-block-component-body-card-form-hidden" id="main-block-component-body-card-form-3">
+                        <div class="main-block-component-body-card-form-container">
+                            <h2>Parabéns, Mariana! 🎉</h2>
+                            <p>Você finalizou com sucesso a configuração do seu mensageiro SMS!</p>
+                            <p>Lembre-se que você pode incluir quantas mensagens você quiser no seu mensageiro.</p>
+                            <p>Aqui vão algumas dicas de ouro para sua comunicação ser um sucesso:</p>
+                            <ul>
+                                <li>Mensagens curtas e diretas são efetivas para se comunicar com seus clientes 👋</li>
+                                <li>No mensageiro SMS, <u>evite o uso de caracteres especiais e acentuação</u> <strong>sempre</strong> 🈶</li>
+                                <li>Para uma melhor experiência, tenha sempre mensagens personalizadas para seus produtos 📦</li>
+                            </ul>
+                            <p><strong>Agora é só arrasar nas vendas e deixar seus clientes sempre satisfeitos e atualizados!</p></strong>
+                            <p>Estamos juntos nessa!</p><br>
+                            <p>Sucesso e diversão na sua jornada! 🚀</p>
+                            <p><strong>Equipe Wappdate.</strong></p>
+                        </div>
                     </div>
 
-                    <div class="main-block-component-body-card-left-column"
-                        id="main-block-component-body-card-left-column-4">
-                        <div class="main-block-component-body-card-left-column-index"
-                            id="main-block-component-body-card-left-column-index-4">
-                            4
-                        </div>
-                        <div class="main-block-component-body-card-left-column-button-hidden"
-                            id="main-block-component-body-card-left-column-button-4" onclick="mensageiro4()">
-                            <svg width="31" height="24" viewBox="0 0 31 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M30.0607 13.0607C30.6464 12.4749 30.6464 11.5251 30.0607 10.9393L20.5147 1.3934C19.9289 0.80761 18.9792 0.80761 18.3934 1.3934C17.8076 1.97918 17.8076 2.92893 18.3934 3.51472L26.8787 12L18.3934 20.4853C17.8076 21.0711 17.8076 22.0208 18.3934 22.6066C18.9792 23.1924 19.9289 23.1924 20.5147 22.6066L30.0607 13.0607ZM1.31134e-07 13.5L29 13.5L29 10.5L-1.31134e-07 10.5L1.31134e-07 13.5Z"
-                                    fill="white" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="main-block-component-body-card-form-hidden" id="main-block-component-body-card-form-4">
-                    </div>
-
-                    <div class="main-block-component-body-card-left-column main-block-component-body-card-border-radius-right"
-                        id="main-block-component-body-card-left-column-5">
-                        <div class="main-block-component-body-card-left-column-index"
-                            id="main-block-component-body-card-left-column-index-5">
-                            5
-                        </div>
-                        <div class="main-block-component-body-card-left-column-button-hidden"
-                            id="main-block-component-body-card-left-column-button-5" onclick="mensageiro5()">
-                            <svg width="31" height="24" viewBox="0 0 31 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M30.0607 13.0607C30.6464 12.4749 30.6464 11.5251 30.0607 10.9393L20.5147 1.3934C19.9289 0.80761 18.9792 0.80761 18.3934 1.3934C17.8076 1.97918 17.8076 2.92893 18.3934 3.51472L26.8787 12L18.3934 20.4853C17.8076 21.0711 17.8076 22.0208 18.3934 22.6066C18.9792 23.1924 19.9289 23.1924 20.5147 22.6066L30.0607 13.0607ZM1.31134e-07 13.5L29 13.5L29 10.5L-1.31134e-07 10.5L1.31134e-07 13.5Z"
-                                    fill="white" />
-                            </svg>
-                        </div>
-                    </div>
                     <div class="main-block-component-body-card-form-hidden" id="main-block-component-body-card-form-5">
                     </div>
                 </div>
