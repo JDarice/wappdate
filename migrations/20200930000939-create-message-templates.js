@@ -9,10 +9,18 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       createdByUserId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'Id'
+        }
       },
       messageChannelSettings_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'MessageChannelSettings',
+          key: 'Id'
+        }
       },
       messageName: {
         type: Sequelize.STRING

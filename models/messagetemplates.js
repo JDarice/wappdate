@@ -1,21 +1,10 @@
 'use strict';
 const {
-  Model
+  sequelize
 } = require('sequelize');
+const messagechannelsettings = require('./messagechannelsettings');
 module.exports = (sequelize, DataTypes) => {
-  class MessageTemplates extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-      MessageTemplates.hasMany(Users);
-      MessageTemplates.hasMany(MessageChannelSettings);
-    }
-  };
-  MessageTemplates.init({
+  const MessageTemplates = sequelize.define('MessageTemplates',{
     createdByUserId: DataTypes.INTEGER,
     messageChannelSettings_id: DataTypes.INTEGER,
     messageName: DataTypes.STRING,
@@ -24,9 +13,26 @@ module.exports = (sequelize, DataTypes) => {
     hasSpecialCharacter: DataTypes.BOOLEAN,
     countOfUsedCharacters: DataTypes.INTEGER,
     countOfAvailableCharacters: DataTypes.INTEGER
-  }, {
+
+  },{
     sequelize,
-    modelName: 'MessageTemplates',
-  });
+    modelName: 'MessageTemplates'});
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    MessageTemplates.associate = function(models) {
+      // define association here
+      Users.hasMany(MessageTemplates,{
+        foreignKey: 'createdByUserId'
+      });
+      MessageChannelSettings.hasMany(MessageTemplates,{
+        foreignKey: 'messageChannelSettings_id'
+      })
+      MessageTemplates.belongsTo(Users);
+      MessageTemplates.belongsTo(MessageChannelSettings);
+    }
+  
   return MessageTemplates;
 };

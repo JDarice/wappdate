@@ -1,35 +1,28 @@
 'use strict';
 const {
-  Model
+  sequelize
 } = require('sequelize');
+const {Users} = require('../models');
 module.exports = (sequelize, DataTypes) => {
-  class MessageChannelSettings extends Model {
+  const MessageChannelSettings = sequelize.define('MessageChannelSettings',{
+    createdByUserId: DataTypes.INTEGER,
+    channelType: DataTypes.STRING,
+    sentFromName: DataTypes.STRING
+  },{
+    sequelize,
+    modelName: 'MessageChannelSettings',
+  });
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    MessageChannelSettings.associate = function(models) {
       // define association here
       Users.hasMany(MessageChannelSettings, {
         foreignKey: 'createdByUserId'
       });
       MessageChannelSettings.belongsTo(Users)
-
-      // MessageChannelSettings.hasOne(Users, {
-      //   foreignKey: 'Id'
-      // });
-      // Users.belongsTo(MessageChannelSettings);
-
     }
-  };
-  MessageChannelSettings.init({
-    createdByUserId: DataTypes.INTEGER,
-    channelType: DataTypes.STRING,
-    sentFromName: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'MessageChannelSettings',
-  });
   return MessageChannelSettings;
 };
