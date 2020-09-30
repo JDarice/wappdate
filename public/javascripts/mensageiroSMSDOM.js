@@ -61,7 +61,7 @@ function countChar(val) {
 }
 
 function orderStartedCountChar(val){
-    let businessFromName = "[" + document.getElementById("businessFromName").value.toUpperCase() + "]: ";
+    let businessFromName = document.getElementById("businessFromName").value.toUpperCase() + ": ";
     let businessFromNameLen = businessFromName.length;
     let messageOrderStarted = val.value;
     let totalSMSChar = 160;
@@ -72,7 +72,7 @@ function orderStartedCountChar(val){
 }
 
 function orderReadyCountChar(val){
-    let businessFromName = "[" + document.getElementById("businessFromName").value.toUpperCase() + "]: ";
+    let businessFromName = document.getElementById("businessFromName").value.toUpperCase() + ": ";
     let businessFromNameLen = businessFromName.length;
     let messageOrderStarted = val.value;
     let totalSMSChar = 160;
