@@ -1,3 +1,4 @@
+'use strict';
 const {
   sequelize
 } = require('sequelize');
@@ -10,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
     lastLogin: DataTypes.DATE,
     loginCounter: DataTypes.INTEGER,
     createdByUserId: DataTypes.INTEGER
-  },{});
+  },{
+    sequelize,
+    modelName: 'Users'});
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -19,6 +22,5 @@ module.exports = (sequelize, DataTypes) => {
     Users.associate = function(models) {      
       Users.hasMany(Users);
     }
-    console.log(Users);
   return Users;
 };

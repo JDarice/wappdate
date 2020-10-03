@@ -3,25 +3,27 @@ const {
   sequelize
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  const MessageChannelSettings = sequelize.define('MessageChannelSettings',{
+  const Agendas = sequelize.define('Agendas', {
     createdByUserId: DataTypes.INTEGER,
-    channelType: DataTypes.STRING,
-    sentFromName: DataTypes.STRING
-  },{
+    workSpaceItem_id: DataTypes.INTEGER
+  }, {
     sequelize,
-    modelName: 'MessageChannelSettings',
-  });
+    modelName: 'Agendas'});
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    MessageChannelSettings.associate = function(models) {
+    Agendas.associate = function(models) {
       // define association here
-      MessageChannelSettings.belongsTo(models.Users)
-      models.Users.hasMany(MessageChannelSettings, {
+      Agendas.belongsTo(models.Users);
+      Agendas.belongsTo(models.WorkSpaceItems);
+      models.Users.hasMany(Agendas,{
         foreignKey: 'createdByUserId'
       });
+      models.WorkSpaceItems.hasMany(Agendas,{
+        foreignKey: 'workSpaceItem_id'
+      });
     }
-  return MessageChannelSettings;
+  return Agendas;
 };

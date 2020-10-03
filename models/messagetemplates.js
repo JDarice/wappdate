@@ -2,7 +2,6 @@
 const {
   sequelize
 } = require('sequelize');
-const messagechannelsettings = require('./messagechannelsettings');
 module.exports = (sequelize, DataTypes) => {
   const MessageTemplates = sequelize.define('MessageTemplates',{
     createdByUserId: DataTypes.INTEGER,
@@ -24,15 +23,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     MessageTemplates.associate = function(models) {
       // define association here
-      Users.hasMany(MessageTemplates,{
+      MessageTemplates.belongsTo(models.Users);
+      MessageTemplates.belongsTo(models.MessageChannelSettings);
+      models.Users.hasMany(MessageTemplates,{
         foreignKey: 'createdByUserId'
       });
-      MessageChannelSettings.hasMany(MessageTemplates,{
+      models.MessageChannelSettings.hasMany(MessageTemplates,{
         foreignKey: 'messageChannelSettings_id'
       })
-      MessageTemplates.belongsTo(Users);
-      MessageTemplates.belongsTo(MessageChannelSettings);
-    }
-  
+    }  
   return MessageTemplates;
 };

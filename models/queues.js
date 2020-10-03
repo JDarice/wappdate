@@ -3,25 +3,24 @@ const {
   sequelize
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  const MessageChannelSettings = sequelize.define('MessageChannelSettings',{
+  const Queues = sequelize.define('Queues', {
     createdByUserId: DataTypes.INTEGER,
-    channelType: DataTypes.STRING,
-    sentFromName: DataTypes.STRING
-  },{
+    queueName: DataTypes.STRING,
+    queueType: DataTypes.STRING
+  }, {
     sequelize,
-    modelName: 'MessageChannelSettings',
-  });
+    modelName: 'Queues'});
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    MessageChannelSettings.associate = function(models) {
+    Queues.associate = function(models) {
       // define association here
-      MessageChannelSettings.belongsTo(models.Users)
-      models.Users.hasMany(MessageChannelSettings, {
+      Queues.belongsTo(models.Users);
+      models.Users.hasMany(Queues,{
         foreignKey: 'createdByUserId'
       });
     }
-  return MessageChannelSettings;
+  return Queues;
 };

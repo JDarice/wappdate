@@ -20,10 +20,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     Products.associate = function(models) {
       // define association here
-      Users.hasMany(Products,{
+      Products.belongsTo(models.Users)
+      models.Users.hasMany(Products,{
         foreignKey: 'createdByUserId'
       });
-      Products.belongsTo(Users)
     }
   return Products;
 };
