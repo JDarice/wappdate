@@ -24,16 +24,16 @@ module.exports = {
         type: Sequelize.STRING
       },
       phoneNumber: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       legalType: {
         type: Sequelize.STRING
       },
       cnpj: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       cpf: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       photoFilePath: {
         type: Sequelize.STRING
