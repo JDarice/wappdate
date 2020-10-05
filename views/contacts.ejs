@@ -648,6 +648,16 @@
                 </div>
 
                 <div class="main-block-component-body-detail" id="main-block-component-body-detail">
+                    <div class="main-block-component-body-detail-close" onclick="cancelarCriarContato()">
+                        <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="22.6274" cy="23.2142" r="16" transform="rotate(-45 22.6274 23.2142)"
+                                fill="#22546E" />
+                            <path d="M14.8053 18.5028L17.7195 15.5886L30.5306 28.3998L27.6164 31.3139L14.8053 18.5028Z"
+                                fill="#47CE8D" />
+                            <path d="M27.5635 15.0618L30.4751 17.9734L17.2758 31.1727L14.3642 28.2611L27.5635 15.0618Z"
+                                fill="#47CE8D" />
+                        </svg>
+                    </div>
                     <div class="main-block-component-body-detail-header">
                         <div class="main-block-component-body-detail-header-name">
                             Mariana Brasil
@@ -671,7 +681,7 @@
                                 <!-- Rounded switch -->
                                 <label class="switch">
                                     <label for="status" class="sr-only">Status do Contato</label>
-                                    <input type="checkbox" name="status" id="status">
+                                    <input type="checkbox" name="status" id="status" checked>
                                     <span class="slider round"></span>
                                 </label>
                             </div>
@@ -704,11 +714,7 @@
                             </div>
                             <div class="form-row form-group">
                                 <div class="col">
-                                    <input type="submit" class="btn btn-success" value="Salvar">
-                                </div>
-                                <div class="col">
-                                    <input type="submit" class="btn btn-secondary" value="Excluir" name="excluir"
-                                        id="excluir" onclick="cancelarCriarContato()">
+                                    <input type="submit" class="btn btn-success btn-block" value="Salvar">
                                 </div>
                             </div>
                         </form>
