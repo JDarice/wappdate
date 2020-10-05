@@ -15,7 +15,7 @@ const contactsController = {
             let firstName = request.body.firstName;
             let lastName = request.body.lastName;
             let email = request.body.email;
-            let phoneNumber = request.body.phoneNumber;
+            let phoneNumber = request.body.phoneNumber.replace('(','').replace(')','').replace(' ','').replace('-','');
             let cpfOrCnpj = request.body.cpfOrCnpj;
             let status = request.body.status;
 
