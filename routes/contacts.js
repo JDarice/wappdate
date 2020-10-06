@@ -9,5 +9,6 @@ router.post('/criar', contactsController.create);
 router.get('/criar', function(req, res) {
     res.redirect('/contatos');
    });
+router.get('/buscar', contactsController.newSearch);
   
 module.exports = router;

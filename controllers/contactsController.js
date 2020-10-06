@@ -2,6 +2,7 @@ const app = require("../app");
 const { request, response, render } = require("../app");
 const {Users} = require('../models');
 const {Contacts} = require('../models');
+const Op = require("sequelize").Op;
 
 const contactsController = {
     index: (request, response) => {
@@ -10,7 +11,7 @@ const contactsController = {
 
     create: async (request, response) => {
         console.log(request.body);
-        message = '';
+        confirmationAlert = '';
         if(request.method == "POST"){
             let firstName = request.body.firstName;
             let lastName = request.body.lastName;
@@ -67,16 +68,50 @@ const contactsController = {
 
             } else {};
 
-            message = "Parabéns! Um novo contato foi criado!";
+            confirmationAlert = "Parabéns! Um novo contato foi criado!";
             // response.redirect('/contatos');
-            response.render('contacts.ejs', {message: message});
+            response.render('contacts.ejs', {confirmationAlert: confirmationAlert});
         } else {
-            response.render('register.ejs', {message: message});
+            response.render('register.ejs', {confirmationAlert: confirmationAlert});
         }
     },
 
+    newSearch: async (request, response) => {
+        const email = request.query.email;
+        const nome = request.query.nome;
+        let filter = {where:{}};
+        if(!!email){
+            filter = {
+                where:{
+                    ...filter.where,email:email
+                }
+            }
+        }
+        if(!!nome){
+            filter = {
+                where:{
+                    ...filter.where,
+                    [Op.or]:[
+                        {
+                            firstName:{
+                                [Op.like]: '%' + nome + '%'
+                            }
+                        },
+                        {
+                            lastName:{
+                                [Op.like]: '%' + nome + '%'
+                            }
+                        }                        
+                    ]
+                }
+            }
+        }
+        console.log(email,filter, request.params);
+        return response.json(await Contacts.findAll(filter))
+    },
+
     login: (request, response) => {
-        response.json(request.body);
+        response.json(request.query);
     },
 
     register: (request, response) => {
