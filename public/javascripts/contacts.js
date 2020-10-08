@@ -1,19 +1,19 @@
-function obterContato(callback,filtro){
+function obterContato(callback, filtro) {
     let baseurl = 'http://localhost:3000/contatos/buscar'
-    if(!!filtro){
+    if (!!filtro) {
         baseurl += '?' + filtro.coluna + '=' + filtro.valor;
-        }
+    }
 
-    fetch(baseurl).then(function(response){return response.json()})
+    fetch(baseurl).then(function (response) { return response.json() })
         .then(callback)
 }
 
-function filtrarValor(){
+function filtrarValor() {
     const buscarContato = document.getElementById('buscarContato').value;
-    obterContato(listarContatos,{coluna:'nome',valor:buscarContato})
+    obterContato(listarContatos, { coluna: 'nome', valor: buscarContato })
 }
 
-function listarContatos(response){
+function listarContatos(response) {
     const container = document.getElementById('main-block-component-body-list-container');
     container.innerHTML = '';
     response.forEach(element => {
@@ -39,7 +39,7 @@ function listarContatos(response){
         const excluir = document.createElement('div');
         excluir.classList.add('excluir');
         const enviarMsg = document.createElement('div');
-        excluir.classList.add('enviarMsg');
+        enviarMsg.classList.add('enviarMsg');
         const addFila = document.createElement('div');
         addFila.classList.add('btn');
         addFila.classList.add('btn-success');
@@ -47,7 +47,7 @@ function listarContatos(response){
         Id.innerHTML = element.Id;
         nome.innerHTML = element.firstName + ' ' + element.lastName;
         status.innerHTML = element.status == 'on' ? 'Ativo' : 'Inativo';
-        atualizar.innerHTML = 'Atualizar';
+        atualizar.innerHTML = '<div style="cursor: pointer;" onclick="editarContato(' + element.id + ')">Atualizar</div>';
         excluir.innerHTML = 'Excluir';
         enviarMsg.innerHTML = 'Enviar Mensagem';
         addFila.innerHTML = '+ Fila/Esteira';
@@ -60,12 +60,99 @@ function listarContatos(response){
         row.appendChild(status);
         row.appendChild(acoes);
         mainBlockComponentBodyListLine.appendChild(row);
-        container.appendChild(mainBlockComponentBodyListLine);        
+        container.appendChild(mainBlockComponentBodyListLine);
     });
 };
 
 obterContato(listarContatos);
 
-document.getElementById('botaoBuscarContato').addEventListener('click',function(){
+document.getElementById('botaoBuscarContato').addEventListener('click', function () {
     filtrarValor();
 });
+
+function criarContato() {
+    document.getElementById("firstName").value = "";
+    document.getElementById("lastName").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("phoneNumber").value = "";
+    document.getElementById("cpfOrCnpj").value = "";
+    document.getElementById("status").checked = "checked";
+    document.getElementById("formSubmit").value = "Salvar";
+    document.getElementById("formMethodAction").method = "POST";
+    document.getElementById("formMethodAction").action = "/contatos/criar";
+    document.getElementById("main-block-component-body-detail-header-name").innerHTML = "Criando um novo contato";
+
+    document.getElementById("main-block-component-body-detail").style.visibility = "visible";
+    document.getElementById("main-block-component-body-detail").style.display = "block";
+}
+
+document.getElementById('phoneNumber').addEventListener('input', function (e) {
+    var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+    e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+});
+
+function cancelarCriarContato() {
+    document.getElementById("main-block-component-body-detail").style.display = "none";
+    document.getElementById("main-block-component-body-detail").style.visibility = "hidden";
+}
+
+// function confirmationAlert() {
+//   document.getElementById("confirmationAlert").style.display = "block";
+//   document.getElementById("confirmationAlert").style.visibility = "visible";
+// }
+
+function editarContato(id) {
+    const buscarContato = id;
+    obterContato(editarContatoForm, { coluna: 'id', valor: buscarContato })
+}
+
+function editarContatoForm(response) {
+    response.forEach(element => {
+        console.log(element);
+
+        let status = element.status;
+        const firstName = element.firstName;
+        const lastName = element.lastName;
+        const email = element.email;
+        const phoneNumber = element.phoneNumber;
+        const cpf = element.cpf;
+        const cnpj = element.cnpj;
+        let cpfOrCnpj;
+
+        if (!!cpf) {
+            cpfOrCnpj = cpf;
+        };
+        if (!!cnpj) {
+            cpfOrCnpj = cnpj;
+        };
+
+        if (!!status) {
+            status = "checked";
+        };
+        if (!status) {
+            status = "";
+        };
+
+        document.getElementById("firstName").value = firstName;
+        document.getElementById("lastName").value = lastName;
+        document.getElementById("email").value = email;
+        document.getElementById("phoneNumber").value = phoneNumber;
+        function phoneNumberFormat(e) {
+            var e = document.getElementById("phoneNumber");
+            var x = e.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+            e.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        };
+        phoneNumberFormat();
+        document.getElementById("cpfOrCnpj").value = cpfOrCnpj;
+        document.getElementById("status").checked = status;
+        document.getElementById("main-block-component-body-detail-header-name").innerHTML = firstName + " " + lastName;
+
+
+        document.getElementById("formMethodAction").action = "/contatos/editar/"+ element.id + "?_method=PUT";
+    });
+
+    document.getElementById("formMethodAction").method = "POST";
+    document.getElementById("formSubmit").value = "Atualizar";
+    document.getElementById("main-block-component-body-detail").style.visibility = "visible";
+    document.getElementById("main-block-component-body-detail").style.display = "block";
+}

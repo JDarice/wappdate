@@ -4,6 +4,10 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   const WorkSpaceItems = sequelize.define('WorkSpaceItems', {
+    id: {
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
     createdByUserId: DataTypes.INTEGER,
     contact_id: DataTypes.INTEGER,
     product_has_messageTemplate_id: DataTypes.INTEGER,

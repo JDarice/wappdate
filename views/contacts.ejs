@@ -124,18 +124,12 @@
                         </svg>
                     </div>
                     <div class="main-block-component-body-detail-header">
-                        <div class="main-block-component-body-detail-header-name">
-                            Mariana Brasil
-                        </div>
-                        <div class="main-block-component-body-detail-header-name">
-                            |
-                        </div>
-                        <div class="main-block-component-body-detail-header-name">
-                            ID: 0001
+                        <div class="main-block-component-body-detail-header-name" id="main-block-component-body-detail-header-name">
+                            Criando um novo contato
                         </div>
                     </div>
                     <div class="main-block-component-body-detail-container">
-                        <form method="POST" action="/contatos/criar">
+                        <form method="POST" action="/contatos/criar" id="formMethodAction">
                             <div class="main-block-component-body-detail-container-photo">
                                 <div>Editar</div>
                                 <div>|</div>
@@ -146,7 +140,7 @@
                                 <!-- Rounded switch -->
                                 <label class="switch">
                                     <label for="status" class="sr-only">Status do Contato</label>
-                                    <input type="checkbox" name="status" id="status" checked>
+                                    <input type="checkbox" name="status" id="status">
                                     <span class="slider round"></span>
                                 </label>
                             </div>
@@ -179,7 +173,7 @@
                             </div>
                             <div class="form-row form-group">
                                 <div class="col">
-                                    <input type="submit" class="btn btn-success btn-block" value="Salvar">
+                                    <input type="submit" class="btn btn-success btn-block" value="Salvar" id="formSubmit">
                                 </div>
                             </div>
                         </form>
@@ -190,7 +184,6 @@
         </div>
     </main>
 
-    <script src="/javascripts/contatoDOM.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

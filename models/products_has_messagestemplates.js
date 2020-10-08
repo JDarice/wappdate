@@ -4,6 +4,10 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   const Products_has_MessagesTemplates = sequelize.define('Products_has_MessagesTemplates',{
+    id: {
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
     product_id: DataTypes.INTEGER,
     messageTemplate_id: DataTypes.STRING
   },{

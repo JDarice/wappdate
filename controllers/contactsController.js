@@ -1,7 +1,7 @@
 const app = require("../app");
 const { request, response, render } = require("../app");
-const {Users} = require('../models');
-const {Contacts} = require('../models');
+const { Users } = require('../models');
+const { Contacts } = require('../models');
 const Op = require("sequelize").Op;
 
 const contactsController = {
@@ -12,15 +12,15 @@ const contactsController = {
     create: async (request, response) => {
         console.log(request.body);
         confirmationAlert = '';
-        if(request.method == "POST"){
+        if (request.method == "POST") {
             let firstName = request.body.firstName;
             let lastName = request.body.lastName;
             let email = request.body.email;
-            let phoneNumber = request.body.phoneNumber.replace('(','').replace(')','').replace(' ','').replace('-','');
+            let phoneNumber = request.body.phoneNumber.replace('(', '').replace(')', '').replace(' ', '').replace('-', '');
             let cpfOrCnpj = request.body.cpfOrCnpj;
             let status = request.body.status;
 
-            if(cpfOrCnpj.length == 11) {
+            if (cpfOrCnpj.length == 11) {
                 cpf = cpfOrCnpj;
                 legalType = "Pessoa Física";
 
@@ -32,7 +32,7 @@ const contactsController = {
                 console.log(status);
                 console.log(cpf);
                 console.log(legalType);
-    
+
                 await Contacts.create({
                     firstName,
                     lastName,
@@ -43,7 +43,7 @@ const contactsController = {
                     cpf
                 });
 
-            } else if(cpfOrCnpj.length == 14){
+            } else if (cpfOrCnpj.length == 14) {
                 cnpj = cpfOrCnpj;
                 legalType = "Pessoa Jurídica";
 
@@ -55,7 +55,7 @@ const contactsController = {
                 console.log(status);
                 console.log(cnpj);
                 console.log(legalType);
-    
+
                 await Contacts.create({
                     firstName,
                     lastName,
@@ -66,48 +66,82 @@ const contactsController = {
                     cnpj
                 });
 
-            } else {};
+            } else { };
 
             confirmationAlert = "Parabéns! Um novo contato foi criado!";
             // response.redirect('/contatos');
-            response.render('contacts.ejs', {confirmationAlert: confirmationAlert});
+            response.render('contacts.ejs', { confirmationAlert: confirmationAlert });
         } else {
-            response.render('register.ejs', {confirmationAlert: confirmationAlert});
+            response.render('register.ejs', { confirmationAlert: confirmationAlert });
         }
     },
 
     newSearch: async (request, response) => {
         const email = request.query.email;
+        const id = request.query.id;
         const nome = request.query.nome;
-        let filter = {where:{}};
-        if(!!email){
+        let filter = { where: {} };
+        if (!!email) {
             filter = {
-                where:{
-                    ...filter.where,email:email
+                where: {
+                    ...filter.where, email: email
                 }
             }
         }
-        if(!!nome){
+        if (!!id) {
             filter = {
-                where:{
+                where: {
+                    ...filter.where, id: id
+                }
+            }
+        }
+        if (!!nome) {
+            filter = {
+                where: {
                     ...filter.where,
-                    [Op.or]:[
+                    [Op.or]: [
                         {
-                            firstName:{
+                            firstName: {
                                 [Op.like]: '%' + nome + '%'
                             }
                         },
                         {
-                            lastName:{
+                            lastName: {
                                 [Op.like]: '%' + nome + '%'
                             }
-                        }                        
+                        }
                     ]
                 }
             }
         }
-        console.log(email,filter, request.params);
+        console.log(email, filter, request.params);
         return response.json(await Contacts.findAll(filter))
+    },
+
+    // edit: async (request, response) => {
+    //     const { id } = request.params;
+    //     const contact = await Contacts.findOne({
+    //         where: {
+    //             id,
+    //         }
+    //     });
+
+    //     return response.render('contacts.ejs', { contact });
+    // },
+
+    update: async (request, response) => {
+        const { id } = request.params;
+        const contact = await Contacts.update({
+            ...request.body
+            }, 
+            {
+            where: {
+                id,
+            }
+        });
+
+        confirmationAlert = "Parabéns! Contato atualizado com sucesso!";
+        response.render('contacts.ejs', { confirmationAlert: confirmationAlert });
     },
 
     login: (request, response) => {

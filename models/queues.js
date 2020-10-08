@@ -4,6 +4,10 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   const Queues = sequelize.define('Queues', {
+    id: {
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
     createdByUserId: DataTypes.INTEGER,
     queueName: DataTypes.STRING,
     queueType: DataTypes.STRING
