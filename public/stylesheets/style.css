@@ -228,6 +228,32 @@ p2 {
   text-align: left;
 }
 
+.confirmation-alert {
+  position: fixed;
+  top: 80px;
+  left: 0px;
+  width: 100%;
+  height: 35px;
+  /* background-color: #47CE8D; */
+  display: block;
+  visibility: visible;
+  align-items: center;
+  justify-content: center;
+  /* box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25); */
+}
+
+.confirmation-alert-item {
+  padding-left: 37px;
+  padding-right: 37px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  color: #47CE8D;
+  font-weight: 800;
+}
+
 .workspace-cta {
   position: relative;
   top: 40px;
@@ -741,11 +767,11 @@ align-content: space-between;
   font-size: 11px;
 }
 
-.odd {
+.main-block-component-body-list-line:nth-child(odd) {
   background-color: #ffffff;
 }
 
-.even {
+.main-block-component-body-list-line:nth-child(even) {
   background-color: #E5E5E5;
 }
 

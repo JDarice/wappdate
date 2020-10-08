@@ -4,7 +4,11 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   const MessageChannelSettings = sequelize.define('MessageChannelSettings',{
-    createdByUserId: DataTypes.INTEGER,
+    id: {
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
+createdByUserId: DataTypes.INTEGER,
     channelType: DataTypes.STRING,
     sentFromName: DataTypes.STRING
   },{

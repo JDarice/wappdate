@@ -4,6 +4,10 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   const Contacts = sequelize.define('Contacts', {
+    id: {
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
     createdByUserId: DataTypes.INTEGER,
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
@@ -24,7 +28,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     Contacts.associate = function(models) {
       // define association here
-      Contacts.belongsTo(models.Users)
+      Contacts.belongsTo(models.Users,{
+        foreignKey: 'Id'
+      })
       models.Users.hasMany(Contacts,{
         foreignKey: 'createdByUserId'
       });

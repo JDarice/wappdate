@@ -4,6 +4,10 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   const MessageTemplates = sequelize.define('MessageTemplates',{
+    id: {
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
     createdByUserId: DataTypes.INTEGER,
     messageChannelSettings_id: DataTypes.INTEGER,
     messageName: DataTypes.STRING,

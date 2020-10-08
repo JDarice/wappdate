@@ -4,6 +4,10 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   const Products = sequelize.define('Products',{
+    id: {
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
     createdByUserId: DataTypes.INTEGER,
     productName: DataTypes.STRING,
     photoFilePath: DataTypes.STRING,

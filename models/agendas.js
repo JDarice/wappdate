@@ -4,7 +4,11 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   const Agendas = sequelize.define('Agendas', {
-    createdByUserId: DataTypes.INTEGER,
+    id: {
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
+createdByUserId: DataTypes.INTEGER,
     workSpaceItem_id: DataTypes.INTEGER
   }, {
     sequelize,
