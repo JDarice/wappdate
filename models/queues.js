@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     createdByUserId: DataTypes.INTEGER,
     queueName: DataTypes.STRING,
-    queueType: DataTypes.STRING
+    queueType: DataTypes.STRING,
+    positions: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Queues'});
