@@ -38,6 +38,9 @@ module.exports = {
       delivered: {
         type: Sequelize.BOOLEAN
       },
+      queuePosition: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

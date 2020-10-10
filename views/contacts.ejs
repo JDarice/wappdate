@@ -113,7 +113,7 @@
                 </div>
 
                 <div class="main-block-component-body-detail" id="main-block-component-body-detail">
-                    <div class="main-block-component-body-detail-close" onclick="cancelarCriarContato()">
+                    <div class="main-block-component-body-detail-close" onclick="fecharContatoForm()">
                         <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="22.6274" cy="23.2142" r="16" transform="rotate(-45 22.6274 23.2142)"
                                 fill="#22546E" />
@@ -141,7 +141,7 @@
                                 <label class="switch">
                                     <label for="status" class="sr-only">Status do Contato</label>
                                     <input type="checkbox" name="status" id="status">
-                                    <span class="slider round"></span>
+                                    <span class="slider round" onclick="concactStatusToggle()"></span>
                                 </label>
                             </div>
                             <div class="form-row form-group">

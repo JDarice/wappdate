@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     scheduleNewDateTime: DataTypes.DATE,
     deliveredDateTime: DataTypes.DATE,
     cancelledDateTime: DataTypes.DATE,
-    delivered: DataTypes.BOOLEAN
+    delivered: DataTypes.BOOLEAN,
+    queuePosition: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'WorkSpaceItems'});
