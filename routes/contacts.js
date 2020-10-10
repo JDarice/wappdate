@@ -7,9 +7,7 @@ const contactsController = require('../controllers/contactsController');
 /* GET users listing. */
 router.get('/', contactsController.index);
 router.post('/criar', contactsController.create);
-router.get('/criar', function(req, res) {
-    res.redirect('/contatos');
-   });
+router.get('/criar', contactsController.edit);
 router.get('/editar', function(req, res) {
     res.redirect('/contatos');
    });

@@ -74,7 +74,6 @@ const contactsController = {
             } else {};
 
             confirmationAlert = "Parabéns! Um novo contato foi criado!";
-            // response.redirect('/contatos');
             response.render('contacts.ejs', { confirmationAlert: confirmationAlert });
         } else {
             response.render('register.ejs', { confirmationAlert: confirmationAlert });
@@ -123,16 +122,10 @@ const contactsController = {
         return response.json(await Contacts.findAll(filter))
     },
 
-    // edit: async (request, response) => {
-    //     const { id } = request.params;
-    //     const contact = await Contacts.findOne({
-    //         where: {
-    //             id,
-    //         }
-    //     });
-
-    //     return response.render('contacts.ejs', { contact });
-    // },
+    edit: async (request, response) => {
+        createContacFormVisibility = true;
+        response.render('contacts.ejs',{ createContacFormVisibility: createContacFormVisibility});
+    },
 
     update: async (request, response) => {
         const { id } = request.params;

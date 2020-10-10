@@ -95,6 +95,8 @@ document.getElementById('phoneNumber').addEventListener('input', function (e) {
 function fecharContatoForm() {
     document.getElementById("main-block-component-body-detail").style.display = "none";
     document.getElementById("main-block-component-body-detail").style.visibility = "hidden";
+    document.getElementById("main-block-component-body-detail-visible").style.display = "none";
+    document.getElementById("main-block-component-body-detail-visible").style.visibility = "hidden";
 }
 
 // function confirmationAlert() {
