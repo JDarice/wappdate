@@ -788,6 +788,11 @@ align-content: space-between;
   visibility: hidden;
 }
 
+.main-block-component-body-detail-visible {
+  display: block;
+  visibility: visible;
+}
+
 .main-block-component-body-detail-close{
   cursor: pointer;
   position: absolute;

@@ -1,0 +1,67 @@
+<div class="main-block-component-body-detail" id="main-block-component-body-detail" onload="">
+    <div class="main-block-component-body-detail-close" onclick="fecharContatoForm()">
+        <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22.6274" cy="23.2142" r="16" transform="rotate(-45 22.6274 23.2142)"
+                fill="#22546E" />
+            <path d="M14.8053 18.5028L17.7195 15.5886L30.5306 28.3998L27.6164 31.3139L14.8053 18.5028Z"
+                fill="#47CE8D" />
+            <path d="M27.5635 15.0618L30.4751 17.9734L17.2758 31.1727L14.3642 28.2611L27.5635 15.0618Z"
+                fill="#47CE8D" />
+        </svg>
+    </div>
+    <div class="main-block-component-body-detail-header">
+        <div class="main-block-component-body-detail-header-name" id="main-block-component-body-detail-header-name">
+            Criando um novo contato
+        </div>
+    </div>
+    <div class="main-block-component-body-detail-container">
+        <form method="POST" action="/contatos/criar" id="formMethodAction">
+            <div class="main-block-component-body-detail-container-photo">
+                <div>Editar</div>
+                <div>|</div>
+                <div>Excluir</div>
+            </div>
+            <div class="main-block-component-body-detail-container-status">
+                <div>Status do contato:</div>
+                <!-- Rounded switch -->
+                <label class="switch">
+                    <label for="status" class="sr-only">Status do Contato</label>
+                    <input type="checkbox" name="status" id="status">
+                    <span class="slider round" onclick="concactStatusToggle()"></span>
+                </label>
+            </div>
+            <div class="form-row form-group">
+                <div class="col">
+                    <label for="firstName" class="sr-only">Nome</label>
+                    <input type="text" class="form-control" placeholder="Nome" name="firstName"
+                        id="firstName" required>
+                </div>
+                <div class="col">
+                    <label for="lastName" class="sr-only">Sobrenome</label>
+                    <input type="text" class="form-control" placeholder="Sobrenome" name="lastName"
+                        id="lastName" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="sr-only">Email</label>
+                <input type="email" class="form-control" id="email" name="email"
+                    placeholder="seu@email.com.br" required>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber" class="sr-only">Celular/WhatsApp</label>
+                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber"
+                    placeholder="Celular/WhatsApp: só números!" required>
+            </div>
+            <div class="form-group">
+                <label for="cpfOrCnpj" class="sr-only">CPF ou CNPJ</label>
+                <input type="text" class="form-control" id="cpfOrCnpj" name="cpfOrCnpj"
+                    placeholder="CPF ou CNPJ: só números!">
+            </div>
+            <div class="form-row form-group">
+                <div class="col">
+                    <input type="submit" class="btn btn-success btn-block" value="Salvar" id="formSubmit">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
