@@ -46,7 +46,7 @@ function listarContatos(response) {
         addFila.classList.add('main-block-component-body-list-item-cta1');
         Id.innerHTML = element.Id;
         nome.innerHTML = element.firstName + ' ' + element.lastName;
-        status.innerHTML = element.status == 'on' ? 'Ativo' : 'Inativo';
+        status.innerHTML = element.status == 'Active' ? 'Ativo' : 'Inativo';
         atualizar.innerHTML = '<div style="cursor: pointer;" onclick="editarContato(' + element.id + ')">Atualizar</div>';
         excluir.innerHTML = 'Excluir';
         enviarMsg.innerHTML = 'Enviar Mensagem';
@@ -76,7 +76,8 @@ function criarContato() {
     document.getElementById("email").value = "";
     document.getElementById("phoneNumber").value = "";
     document.getElementById("cpfOrCnpj").value = "";
-    document.getElementById("status").checked = "checked";
+    document.getElementById("status").checked = true;
+    document.getElementById("status").value = "Active";
     document.getElementById("formSubmit").value = "Salvar";
     document.getElementById("formMethodAction").method = "POST";
     document.getElementById("formMethodAction").action = "/contatos/criar";
@@ -91,7 +92,7 @@ document.getElementById('phoneNumber').addEventListener('input', function (e) {
     e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
 });
 
-function cancelarCriarContato() {
+function fecharContatoForm() {
     document.getElementById("main-block-component-body-detail").style.display = "none";
     document.getElementById("main-block-component-body-detail").style.visibility = "hidden";
 }
@@ -110,15 +111,15 @@ function editarContatoForm(response) {
     response.forEach(element => {
         console.log(element);
 
-        let status = element.status;
+        const status = element.status;
         const firstName = element.firstName;
         const lastName = element.lastName;
         const email = element.email;
         const phoneNumber = element.phoneNumber;
         const cpf = element.cpf;
         const cnpj = element.cnpj;
+        
         let cpfOrCnpj;
-
         if (!!cpf) {
             cpfOrCnpj = cpf;
         };
@@ -126,11 +127,12 @@ function editarContatoForm(response) {
             cpfOrCnpj = cnpj;
         };
 
-        if (!!status) {
-            status = "checked";
+        let checked;
+        if (status == "Active") {
+            checked = true;
         };
-        if (!status) {
-            status = "";
+        if(status == "Inactive") {
+            checked = false;
         };
 
         document.getElementById("firstName").value = firstName;
@@ -144,15 +146,32 @@ function editarContatoForm(response) {
         };
         phoneNumberFormat();
         document.getElementById("cpfOrCnpj").value = cpfOrCnpj;
-        document.getElementById("status").checked = status;
+        document.getElementById("status").value = status;
+        document.getElementById("status").checked = checked;
+
         document.getElementById("main-block-component-body-detail-header-name").innerHTML = firstName + " " + lastName;
 
 
         document.getElementById("formMethodAction").action = "/contatos/editar/"+ element.id + "?_method=PUT";
+        console.log("status = " + status);
+        console.log("checked = " + checked);
+
     });
 
     document.getElementById("formMethodAction").method = "POST";
     document.getElementById("formSubmit").value = "Atualizar";
     document.getElementById("main-block-component-body-detail").style.visibility = "visible";
     document.getElementById("main-block-component-body-detail").style.display = "block";
+}
+
+function concactStatusToggle(){
+    const status = document.getElementById("status").value;
+    if(status == "Active"){
+        document.getElementById("status").value = "Inactive";
+        console.log(document.getElementById("status").value);
+    };
+    if(status == "Inactive"){
+        document.getElementById("status").value = "Active";
+        console.log(document.getElementById("status").value);
+    };
 }

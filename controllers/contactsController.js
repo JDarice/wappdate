@@ -19,6 +19,10 @@ const contactsController = {
             let phoneNumber = request.body.phoneNumber.replace('(', '').replace(')', '').replace(' ', '').replace('-', '');
             let cpfOrCnpj = request.body.cpfOrCnpj;
             let status = request.body.status;
+            if (status == null) {
+                status = "Inactive";
+            };
+
 
             if (cpfOrCnpj.length == 11) {
                 cpf = cpfOrCnpj;
@@ -43,7 +47,8 @@ const contactsController = {
                     cpf
                 });
 
-            } else if (cpfOrCnpj.length == 14) {
+            };
+            if (cpfOrCnpj.length == 14) {
                 cnpj = cpfOrCnpj;
                 legalType = "Pessoa Jurídica";
 
@@ -66,14 +71,14 @@ const contactsController = {
                     cnpj
                 });
 
-            } else { };
+            } else {};
 
             confirmationAlert = "Parabéns! Um novo contato foi criado!";
             // response.redirect('/contatos');
             response.render('contacts.ejs', { confirmationAlert: confirmationAlert });
         } else {
             response.render('register.ejs', { confirmationAlert: confirmationAlert });
-        }
+        };
     },
 
     newSearch: async (request, response) => {
@@ -131,17 +136,83 @@ const contactsController = {
 
     update: async (request, response) => {
         const { id } = request.params;
-        const contact = await Contacts.update({
-            ...request.body
-            }, 
-            {
-            where: {
-                id,
-            }
-        });
+        confirmationAlert = '';
+        if (request.method == "PUT") {
+            let firstName = request.body.firstName;
+            let lastName = request.body.lastName;
+            let email = request.body.email;
+            let phoneNumber = request.body.phoneNumber.replace('(', '').replace(')', '').replace(' ', '').replace('-', '');
+            let cpfOrCnpj = request.body.cpfOrCnpj;
+            let status = request.body.status;
+            if (status == null) {
+                status = "Inactive";
+            };
 
-        confirmationAlert = "Parabéns! Contato atualizado com sucesso!";
-        response.render('contacts.ejs', { confirmationAlert: confirmationAlert });
+            if (cpfOrCnpj.length == 11) {
+                cpf = cpfOrCnpj;
+                legalType = "Pessoa Física";
+
+                console.log(firstName);
+                console.log(lastName);
+                console.log(email);
+                console.log(phoneNumber);
+                console.log(cpfOrCnpj);
+                console.log(status);
+                console.log(cpf);
+                console.log(legalType);
+
+                await Contacts.update({
+                    firstName,
+                    lastName,
+                    email,
+                    phoneNumber,
+                    status,
+                    legalType,
+                    cpf
+                    }, 
+                    {
+                    where: {
+                        id,
+                    }
+                });
+
+            };
+            if (cpfOrCnpj.length == 14) {
+                cnpj = cpfOrCnpj;
+                legalType = "Pessoa Jurídica";
+
+                console.log(firstName);
+                console.log(lastName);
+                console.log(email);
+                console.log(phoneNumber);
+                console.log(cpfOrCnpj);
+                console.log(status);
+                console.log(cnpj);
+                console.log(legalType);
+
+                await Contacts.update({
+                    firstName,
+                    lastName,
+                    email,
+                    phoneNumber,
+                    status,
+                    legalType,
+                    cnpj
+                    }, 
+                    {
+                    where: {
+                        id,
+                    }
+                });
+
+            } else {};
+
+            confirmationAlert = "Parabéns! Contato atualizado com sucesso!";
+            response.render('contacts.ejs', { confirmationAlert: confirmationAlert });
+            console.log("status: " + request.body.status);
+        } else {
+        resporesponse.render('register.ejs', { confirmationAlert: confirmationAlert });
+        };
     },
 
     login: (request, response) => {
