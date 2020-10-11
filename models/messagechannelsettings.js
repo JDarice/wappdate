@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-createdByUserId: DataTypes.INTEGER,
+    createdByUserId: DataTypes.INTEGER,
     channelType: DataTypes.STRING,
     sentFromName: DataTypes.STRING
   },{
@@ -22,7 +22,9 @@ createdByUserId: DataTypes.INTEGER,
      */
     MessageChannelSettings.associate = function(models) {
       // define association here
-      MessageChannelSettings.belongsTo(models.Users)
+      MessageChannelSettings.belongsTo(models.Users,{
+        foreignKey: 'Id'
+      })
       models.Users.hasMany(MessageChannelSettings, {
         foreignKey: 'createdByUserId'
       });
