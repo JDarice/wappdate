@@ -1,3 +1,38 @@
+function buscarRemetente(callback) {
+    let baseurl = 'http://localhost:3000/mensageiro/buscar/'
+    fetch(baseurl).then(function (response) { return response.json() })
+        .then(callback)
+}
+
+function mostrarContato() {
+    buscarRemetente(mostrarContatoForm)
+};
+
+function mostrarContatoForm(response) {
+    response.forEach(element => {
+        console.log(element);
+
+        const sentFromName = element.sentFromName;
+        if(!!sentFromName) {
+            document.getElementById("businessFromName").value = sentFromName;
+            document.getElementById("sentFromNameform").action = "/mensageiro/configuracoes/remetente/editar/"+ element.id + "?_method=PUT";
+            console.log("Sender = " + sentFromName);   
+            mensageiroIniciar()
+            mostrarbotaomensageiro2() 
+        } else {
+            document.getElementById("sentFromNameform").action = "/mensageiro/configuracoes/remetente/";
+            console.log("Sender = " + sentFromName);
+
+        };
+    });
+};
+
+mostrarContato();
+
+
+
+
+
 
 function mensageiroIniciar() {
     document.getElementById("main-block-component-body-card-form-0").classList.add('main-block-component-body-card-form-hidden');
@@ -61,23 +96,25 @@ function countChar(val) {
 }
 
 function orderStartedCountChar(val){
-    let businessFromName = document.getElementById("businessFromName").value.toUpperCase() + ": ";
+    let businessFromName = document.getElementById("businessFromName").value.toUpperCase();
+    let businessFromNameFormat = "[" + businessFromName + "]: ";
     let businessFromNameLen = businessFromName.length;
     let messageOrderStarted = val.value;
     let totalSMSChar = 160;
     let len = val.value.length;
     let availableChar = "Catacteres disponíveis: ";
     let availableCharCount = totalSMSChar - businessFromNameLen - len;
-    document.getElementById("orderStarted").innerHTML = "Sua mensagem: " + "<strong>" + businessFromName + messageOrderStarted + "</strong><br>" + availableChar + "<strong>" + availableCharCount + "</strong>";
+    document.getElementById("orderStarted").innerHTML = "Sua mensagem: " + "<strong>" + businessFromNameFormat + messageOrderStarted + "</strong><br>" + availableChar + "<strong>" + availableCharCount + "</strong>";
 }
 
 function orderReadyCountChar(val){
-    let businessFromName = document.getElementById("businessFromName").value.toUpperCase() + ": ";
+    let businessFromName = document.getElementById("businessFromName").value.toUpperCase();
+    let businessFromNameFormat = "[" + businessFromName + "]: ";
     let businessFromNameLen = businessFromName.length;
     let messageOrderStarted = val.value;
     let totalSMSChar = 160;
     let len = val.value.length;
     let availableChar = "Catacteres disponíveis: ";
     let availableCharCount = totalSMSChar - businessFromNameLen - len;
-    document.getElementById("orderReady").innerHTML = "Sua mensagem: " + "<strong>" + businessFromName + messageOrderStarted + "</strong><br>" + availableChar + "<strong>" + availableCharCount + "</strong>";
+    document.getElementById("orderReady").innerHTML = "Sua mensagem: " + "<strong>" + businessFromNameFormat + messageOrderStarted + "</strong><br>" + availableChar + "<strong>" + availableCharCount + "</strong>";
 }

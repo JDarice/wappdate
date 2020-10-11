@@ -7,9 +7,11 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
-var indexRouter = require('./routes/index');
+var indexRouter = require('./routes');
 var usersRouter = require('./routes/users');
 var contactsRouter = require('./routes/contacts');
+var messengerRouter = require('./routes/messenger');
+var dashboardRouter = require('./routes/dashboard');
 
 var app = express();
 
@@ -34,6 +36,8 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/contatos', contactsRouter);
+app.use('/mensageiro', messengerRouter);
+app.use('/dashboard', dashboardRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
