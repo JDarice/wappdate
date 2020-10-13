@@ -4,17 +4,17 @@ var router = express.Router();
 const messengerController = require('../controllers/messengerController');
 
 
-/* GET users listing. */
-router.get('/', messengerController.index);
+router.get('/', messengerController.templates);
+
 router.get('/configuracoes', messengerController.settings);
-router.get('/buscar', messengerController.newSearch);
-router.post('/configuracoes/remetente', messengerController.createSentFrom);
+router.get('/configuracoes/remetente/buscar', messengerController.newSearchSender);
+router.post('/configuracoes/remetente/criar', messengerController.createSentFrom);
 router.put('/configuracoes/remetente/editar/?:id', messengerController.update);
-// router.post('/criar', messengerController.create);
-// router.get('/criar', messengerController.edit);
-// router.get('/editar', function(req, res) {
-//     res.redirect('/contatos');
-//    });
-// // router.get('/editar/?:id', contactsController.edit);
+router.post('/configuracoes/templates/criar', messengerController.createTemplatesFromSettings);
+
+router.get('/templates', messengerController.templates);
+router.get('/templates/buscar', messengerController.newSearchTemplates);
+router.post('/templates/criar', messengerController.createTemplates);
+router.put('/templates/editar/?:id', messengerController.updateTemplates);
   
 module.exports = router;

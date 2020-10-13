@@ -1,0 +1,49 @@
+<div class="main-block-component-body-detail" id="main-block-component-body-detail">
+    <div class="main-block-component-body-detail-close" onclick="fecharTemplateForm()">
+        <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22.6274" cy="23.2142" r="16" transform="rotate(-45 22.6274 23.2142)" fill="#22546E" />
+            <path d="M14.8053 18.5028L17.7195 15.5886L30.5306 28.3998L27.6164 31.3139L14.8053 18.5028Z"
+                fill="#47CE8D" />
+            <path d="M27.5635 15.0618L30.4751 17.9734L17.2758 31.1727L14.3642 28.2611L27.5635 15.0618Z"
+                fill="#47CE8D" />
+        </svg>
+    </div>
+    <div class="main-block-component-body-detail-header">
+        <div class="main-block-component-body-detail-header-name" id="main-block-component-body-detail-header-name">
+            Criando um novo template
+        </div>
+    </div>
+    <div class="main-block-component-body-detail-container">
+        <form method="POST" action="/mensageiro/templates/criar" id="formMethodAction">
+            <div class="form-group">
+                <label for="messageName" class="sr-only">Nome do template</label>
+                <input type="text" class="form-control" id="messageName" name="messageName"
+                    placeholder="Dê um nome para sua mensagem" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="forProductStage" class="sr-only">Selecione o estágio do produto</label>
+                <select class="form-control" id="forProductStage" name="forProductStage" required>
+                    <option selected disabled="disabled">Selecione o estágio do produto</option>
+                    <option value="started">Produto iniciado</option>
+                    <option value="ready">Produto pronto</option>
+                </select>
+            </div>
+            <div id="senderName" style="visibility: hidden;display: none;"></div>
+            <div class="form-group">
+                <label for="messageContent" class="sr-only">Mensagem do template</label>
+                <textarea class="form-control" id="messageContent" name="messageContent" rows="5"
+                    placeholder="Digite aqui sua mensagem :)" required onkeyup="templateCountChar(this)"></textarea>
+            </div>
+            <div class="main-block-component-body-detail-container-message-render">
+                <div id="messageDisplayed" class="messageDisplayed"></div>
+            </div>
+            <div id="messageDisplayedCount"></div><br>
+            <div class="form-row form-group">
+                <div class="col">
+                    <input type="submit" class="btn btn-success btn-block" value="Salvar" id="formSubmit">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

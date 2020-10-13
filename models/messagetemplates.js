@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     messageContent: DataTypes.STRING,
     hasSpecialCharacter: DataTypes.BOOLEAN,
     countOfUsedCharacters: DataTypes.INTEGER,
-    countOfAvailableCharacters: DataTypes.INTEGER
+    countOfAvailableCharacters: DataTypes.INTEGER,
+    forProductStage: DataTypes.STRING
 
   },{
     sequelize,
@@ -27,8 +28,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     MessageTemplates.associate = function(models) {
       // define association here
-      MessageTemplates.belongsTo(models.Users);
-      MessageTemplates.belongsTo(models.MessageChannelSettings);
+      MessageTemplates.belongsTo(models.Users,{
+        foreignKey: 'Id'
+      });
+      MessageTemplates.belongsTo(models.MessageChannelSettings,{
+        foreignKey: 'Id'
+      });
       models.Users.hasMany(MessageTemplates,{
         foreignKey: 'createdByUserId'
       });

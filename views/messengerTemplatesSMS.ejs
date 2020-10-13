@@ -6,7 +6,7 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Contatos | Wappdate</title>
+    <title>Templates | Wappdate</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/style.css" />
@@ -59,17 +59,17 @@
                 </div>
             </div>
             <div class="main-block-component-title">
-                <h2>Contatos</h2>
+                <h2>Templates</h2>
                 <div class="input-group mb-0 searchbox">
-                    <input type="text" class="form-control" placeholder="Pesquisar contato"
-                        aria-label="Pesquisar contato" aria-describedby="basic-addon2" id="buscarContato">
+                    <input type="text" class="form-control" placeholder="Pesquisar template"
+                        aria-label="Pesquisar contato" aria-describedby="basic-addon2" id="buscarTemplate">
                     <div class="input-group-append">
                         <button class="btn btn-success searchbox-btn" type="button"
-                            id="botaoBuscarContato">Buscar</button>
+                            id="botaoBuscarTemplate">Buscar</button>
                     </div>
                 </div>
-                <button class="btn btn-success main-block-component-cta1" onclick="criarContato()">Criar novo
-                    contato</button>
+                <button class="btn btn-success main-block-component-cta1" onclick="criarTemplate()">Criar novo
+                    template</button>
             </div>
             <div class="main-block-component-body">
                 <div class="main-block-component-body-list">
@@ -100,7 +100,7 @@
                                     <path d="M3.5 0L6.53109 5.25L0.468911 5.25L3.5 0Z" fill="#22546E" />
                                 </svg>
                             </div>
-                            <div class="col-sm-1 main-block-component-body-list-header-name">Status
+                            <div class="col-sm-1 main-block-component-body-list-header-name">Canal
                             </div>
                             <div class="col-sm-5 main-block-component-body-list-header-name">Ações</div>
                         </div>
@@ -112,18 +112,9 @@
                     </div>
                 </div>
 
-                <!-- Contact Form -->
-                <%- include('./partials/contactForm.ejs') %>
-                <% var createContacFormVisibility %>
-                <% if(!!createContacFormVisibility) {%>
-                <script>
-                    document.getElementById("main-block-component-body-detail").classList.add('main-block-component-body-detail-visible');
-                    document.getElementById("status").setAttribute('value', 'Active');
-                    document.getElementById("status").setAttribute('checked', 'checked');
-                </script>
-                <% } else { %>
-                <% }; %>
-                <!-- End of the Contact Form -->
+                <!-- Template Form -->
+                <%- include('./partials/templateForm.ejs') %>
+                <!-- End of the Template Form -->
             </div>
         </div>
     </main>
@@ -137,7 +128,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
-    <script src="/javascripts/contacts.js"></script>
+    <script src="/javascripts/messengerTemplatesSMS.js"></script>
 
 </body>
 
