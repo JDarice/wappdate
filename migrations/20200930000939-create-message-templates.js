@@ -40,6 +40,9 @@ module.exports = {
       countOfAvailableCharacters: {
         type: Sequelize.INTEGER
       },
+      forProductStage: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

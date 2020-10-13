@@ -80,7 +80,10 @@
                                 organizada e fácil. <strong>Vamos começar?</strong></p>
                             <p>Essas mensagens serão usadas para disparar as notificações para seus clientes no momento
                                 em que você iniciar e/ou finalizar o serviço ou produto dele, facilitando seu dia-a-dia
-                                e dispensando a necessidade de enviar mensagens para todos os clientes manualmente.</p>
+                                e dispensando a necessidade de enviar mensagens para todos os clientes manualmente.
+                                Todas as mensagens criadas estarão disponíveis na sessão de templates.</p>
+                            <p>Para ter acesso à sessão de templates, você precisa primeiro finalizar esses 2 passos
+                                aqui, tá legal?</p>
                             <p>Quando você estiver pronto(a), é só clicar na seta localizada na parte de baixo da coluna
                                 com o número 1. Se tiver dúvidas ou precisar de alguma ajuda, você pode acessar a nossa
                                 sessão de suporte.</p>
@@ -108,7 +111,7 @@
                     </div>
                     <div class="main-block-component-body-card-form-hidden" id="main-block-component-body-card-form-1">
                         <div class="main-block-component-body-card-form-container">
-                            <form method="POST" action="/mensageiro/configuracoes/remetente/" id="sentFromNameform">
+                            <form method="POST" action="/mensageiro/configuracoes/remetente/criar/" id="sentFromNameform">
                                 <h2>Primeiro, vamos identificar o seu negócio.</h2>
                                 <p>Todas mensagens que forem enviadas para seus clientes devem ser identificadas com o
                                     nome do seu negócio. Cada mensagem SMS deve conter no máximo 160 caracteres, já
@@ -129,8 +132,8 @@
                                     <div id="charNum"></div>
                                 </div>
                                 <hr>
-                                <input type="submit" class="btn btn-success" onclick="mostrarbotaomensageiro2()" value="Confirmar">
-                                <!-- <div type="submit" class="btn btn-success" onclick="mostrarbotaomensageiro2()">Confirmar</div> -->
+                                <input type="submit" class="btn btn-success" onclick="mostrarbotaomensageiro2()"
+                                    value="Confirmar">
                             </form>
                         </div>
                     </div>
@@ -153,7 +156,8 @@
                     </div>
                     <div class="main-block-component-body-card-form-hidden" id="main-block-component-body-card-form-2">
                         <div class="main-block-component-body-card-form-container">
-                            <form action="" method="POST">
+                            <form action="/mensageiro/configuracoes/templates/criar/" method="POST"
+                                id="myFirstTemplateMessagesform">
                                 <h2>Estamos quade lá!</h2>
                                 <p>Agora, vamos criar algumas mensagens.</p>
                                 <ul>
@@ -167,7 +171,8 @@
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Pedido iniciado:</span>
                                     </div>
                                     <input type="text" class="form-control" aria-label="Small"
-                                        aria-describedby="inputGroup-sizing-sm" onkeyup="orderStartedCountChar(this)">
+                                        aria-describedby="inputGroup-sizing-sm" onkeyup="orderStartedCountChar(this)"
+                                        name="forProductStageStarted" id="forProductStageStarted">
                                 </div>
                                 <div class="main-block-component-body-card-form-char-counter">
                                     <div id="orderStarted"></div>
@@ -177,13 +182,16 @@
                                         <span class="input-group-text" id="inputGroup-sizing-sm">Pedido pronto:</span>
                                     </div>
                                     <input type="text" class="form-control" aria-label="Small"
-                                        aria-describedby="inputGroup-sizing-sm" onkeyup="orderReadyCountChar(this)">
+                                        aria-describedby="inputGroup-sizing-sm" onkeyup="orderReadyCountChar(this)"
+                                        name="forProductStageReady" id="forProductStageReady">
                                 </div>
                                 <div class="main-block-component-body-card-form-char-counter">
                                     <div id="orderReady"></div>
                                 </div>
                                 <hr>
-                                <div class="btn btn-success" onclick="mostrarbotaomensageiro3()">Finalizar</div>
+                                <div id="editTemplatesFromConfigAlert"></div><br>
+                                <input type="submit" class="btn btn-success" onclick="mostrarbotaomensageiro3()"
+                                    value="Finalizar" id="submitMyFirstTemplateMessagesform">
                         </div>
                     </div>
 
@@ -241,7 +249,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
-    <script src="/javascripts/mensageiroSMSDOM.js"></script>
+    <script src="/javascripts/messengerConfig.js"></script>
 
 </body>
 
