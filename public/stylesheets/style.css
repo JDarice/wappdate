@@ -1201,3 +1201,54 @@ Media Queries
   }
   
 }
+
+
+
+
+
+/* carrosel produtos */
+
+#carouselExampleControls {
+  position: relative;
+  top: 200px;
+  color: #47CE8D;
+ 
+  
+}
+
+
+.product-paragrafo {
+  
+  background: #22546E;
+  border: solid 10px #22546E;
+  border-radius: 10%;
+  
+}
+
+a {
+  color: #22546E;
+  text-align: justify;
+  
+  
+  
+}
+
+.card {
+  background-color: #22546E;
+  border-radius: 10%;
+  color: white;
+  position: relative;
+
+
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  padding: 10px;
+  margin: 0px;
+  display: flex;  
+  border-radius: 25%;
+
+}
